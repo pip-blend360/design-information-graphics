@@ -1,0 +1,10 @@
+{
+  "primary": "#2474B5",
+  "comparison": "#71777C",
+  "emphasis": "#E87932",
+  "text": "#252A2E",
+  "muted_text": "#626970",
+  "grid": "#D9DDE1",
+  "background": "#FFFFFF",
+  "categorical": ["#2474B5", "#E87932", "#5B8E7D", "#8064A2", "#B85C5C", "#6B7C93"]
+}

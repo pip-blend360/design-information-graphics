@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Information Graphics"
+  short_description: "Create rigorous, narrative information graphics"
+  default_prompt: "Use $design-information-graphics to design a publication-ready information graphic from my pandas DataFrame."
