@@ -1,110 +1,42 @@
 ---
 name: design-information-graphics
-description: Design, render, review, and revise rigorous narrative information graphics from analysis-ready pandas DataFrames in Jupyter notebooks or Python IDEs. Use for creating explanatory or exploratory static data graphics, improving existing Python visualizations, coordinating multiple graphics in a larger data-science project, applying or inferring brand styles from examples, exporting publication artifacts, or incorporating creator and stakeholder feedback. Requires read-only, contract-valid input data and renders with Matplotlib or Seaborn; do not use for data preparation, aggregation, joins, imputation, modeling, dashboards, or interactive graphics.
+description: Design, render, review, and iterate static information graphics in an existing Python notebook or package. Use for graph brainstorming, selecting formats, proportions, categorical comparisons and ranking, lines and scatterplots, stacked compositions and cumulative totals, and supported sets, hierarchies, maps, diagrams, and flows. Reuse project context across graphs. Require analysis-ready read-only inputs; do not prepare data, define metrics, aggregate, join, impute, fit models, or create dashboards.
 ---
 
 # Design Information Graphics
 
-Create evidence-led visual explanations that combine the narrative coherence of an infographic with quantitative integrity. Treat words, numbers, annotations, and graphical marks as one composition. Use Python as the only renderer.
+Coordinate one skill with supporting modules. Use Python to render; preserve quantitative integrity and integrate code into the scientist's existing notebook or package.
 
-## Route the request
+## Load guidance selectively
 
-Identify the mode before acting:
+Read `references/design-principles.md` and `references/intake-and-clarification.md` for new graphs, reusing already loaded guidance and established context. Read `references/format-selection.md`, then only the selected family:
 
-- **Create**: Design a new information graphic from an in-memory pandas DataFrame.
-- **Review**: Evaluate an existing graphic, figure, notebook cell, or plotting function.
-- **Refine**: Revise an existing graphic from creator or external feedback.
-- **Collection**: Plan or harmonize several graphics within one analytical project.
-- **Brand profile**: Infer or apply a reusable visual system from supplied examples.
+- `references/proportions.md`
+- `references/quantitative-and-ranking.md`
+- `references/lines-and-scatter.md`
+- `references/composition-and-cumulative.md`
+- `references/special-cases.md`
 
-Read only the references required for the mode:
+For rendering, read `references/data-contracts.md`, `references/narrative-composition.md`, and `references/python-rendering.md`. For feedback and finalization, read `references/review-and-iteration.md`. Read `references/project-integration.md` for shared project context and `references/brand-profiles.md` when resolving branding. Do not reload unaffected modules on every revision.
 
-- Always read `references/design-principles.md`.
-- For creation, read `references/intake-and-clarification.md`, `references/data-contracts.md`, `references/narrative-composition.md`, and `references/python-rendering.md`.
-- For review or refinement, read `references/review-and-iteration.md` plus the original brief and contract when available.
-- For several graphics, also read `references/project-integration.md`.
-- For brand work, also read `references/brand-profiles.md`.
+## Protect boundaries
 
-## Enforce non-negotiable boundaries
+Treat source inputs as read-only. Never join, aggregate, reshape analytically, impute, deduplicate, substantively filter, engineer features, define metrics, remove outliers, or fit models. Allow presentation-only column selection, ordering, label formatting, shallow copies, and graphical coordinates. Require the exact analytical grain and all displayed values upstream. Never guess denominators or silently coerce values. Validate before figures or exports; report actionable failures without fixing data. Do not let narrative claims outrun evidence.
 
-- Treat every source DataFrame as read-only.
-- Never join, aggregate, reshape, impute, deduplicate, filter substantively, engineer features, define metrics, remove outliers, or fit models.
-- Never silently coerce incompatible values or guess metric semantics.
-- Allow only presentation operations after validation: select used columns, set visual order, format labels, calculate graphical coordinates, and make a shallow copy.
-- Require an analysis-ready DataFrame at the exact grain needed by the graphic.
-- If data meaning is ambiguous, ask one focused question at a time.
-- If structure or values violate the declared contract, raise an actionable error and create no outputs.
-- Never let a requested story outrun the evidence.
-- Do not silently overwrite an existing graphic, CSV, SVG, PNG, or metadata file.
+## Coordinate the workflow
 
-## Follow the workflow
+1. **Brainstorm briefly.** Inspect the request, existing code, data schema, and project notes. Reuse audience, medium, brand, and conventions. Infer a compact working brief when clear; ask one focused question only when uncertainty could materially change interpretation or design. Keep context in the existing notebook/project, not separate per-graph briefs or YAML.
+2. **Choose the format.** Use the format selector and the relevant family module. Explain the choice briefly. Respect requested formats; explain a concrete mismatch and propose an alternative when necessary. Reuse an existing choice on cosmetic revisions.
+3. **Assign identity and validate.** Choose a descriptive lowercase hyphenated `graphic_id`, check existing headings, functions, and files for collisions, and keep it stable across revisions. Distinguish a new graph from reopening one. Establish grain, fields, units, semantics, uniqueness, and missing-value policy in code or nearby notes. Use `resources/validation.py` when suitable; special structures need explicit equivalent checks.
+4. **Design and render a draft.** Compose the comparison, labels, annotations, and necessary qualifications. Apply creator overrides, project standards, brand profile, then defaults. Integrate runnable code into the existing notebook/package; show the graph there. Use Matplotlib and Seaborn where suitable. Do not silently add dependencies or create a replacement notebook when the original is available. Keep previews lightweight and avoid permanent exports until requested.
+5. **Iterate.** Apply ordinary feedback to the same graph. User-requested design changes are authorized; ask only about consequential ambiguity, conflicting requests, unsupported inputs, or misleading implications. Revisit the selector or data checks only when affected. Do not force another brainstorming session, approval gate, or feedback ledger.
+6. **Finalize on instruction.** Recognize **"finalize this graph"** as completion for the current graph. Apply accompanying last edits, check fidelity and rendered layout, then save the graph and exact data CSV. "Looks good" alone remains feedback; explicit equivalent instructions to finalize or export are also sufficient. Do not finalize with validation failures or unresolved material ambiguity.
+7. **Reopen safely.** On "Revise <graphic_id>", retain the ID and prior exports. Save the next finalized version with matching suffixes such as `-v02`. Preserve code for retained versions in available version history or an identifiable saved code version. Never silently overwrite final exports.
 
-### 1. Inspect context before questioning
+## Deliver exactly three items
 
-Inspect the request, named DataFrame schema, existing project files, graphic registry, brand examples, and earlier graphic artifacts. Do not repeat questions already answered by available context.
+- The graph: display it in the notebook and save PNG by default; use SVG or another appropriate format when requested or required by the medium.
+- The graph code in the notebook or Python package already in use. If inaccessible, supply ready-to-insert code and state that integration remains pending.
+- The exact graph data as a CSV beside the saved graph, with matching ID/version. Include all labels, plotted values, uncertainty, benchmarks, and factual annotation values; preserve precision and meaningful identifiers. Never export unrelated source columns or an internal index.
 
-### 2. Reach a decision-ready brief
-
-Determine the audience, communication objective, exploratory or explanatory mode, intended decision, evidence, primary message status, artifact context, and constraints. Ask one consequential question at a time. Infer harmless implementation details and state them briefly.
-
-Do not render until no unresolved decision could materially change the analytical interpretation or design. For complex work, summarize the brief before proceeding.
-
-### 3. Assign a stable identity
-
-Create a semantic lowercase hyphenated `graphic_id`, such as `retention-program-effect`. Check the project registry before accepting it. Keep the ID stable across revisions; increment the version. Use a different ID for a materially different graphic. Never use generic IDs such as `chart-1`.
-
-### 4. Declare and validate the data contract
-
-Document the DataFrame name, grain, required fields, semantic meanings, types, units, null policy, bounds, expected categories, and uniqueness keys. Use `resources/validation.py` when helpful.
-
-Stop when the contract is incomplete or validation fails. State what was expected, what was observed, why rendering is blocked, and what the upstream workflow must provide. Do not fix the data.
-
-### 5. Design the visual argument
-
-Identify the comparisons and evidence that matter. Choose graphical forms based on relationships, not software defaults. Compose a headline, primary display, supporting evidence, annotations, benchmarks, units, source notes, and methodological qualifications as needed. Prefer direct labels and meaningful comparisons. Use design restraint without equating rigor with empty minimalism.
-
-### 6. Apply project and brand context
-
-Resolve style in this order:
-
-1. Creator-approved graphic override
-2. Project visualization standards
-3. Selected brand profile
-4. Skill defaults
-
-When examples are supplied, infer a candidate brand profile, separate verified properties from uncertain inferences, and ask for confirmation where uncertainty changes the result. Never download or redistribute fonts. If an identified font is unavailable, report it and propose a fallback.
-
-### 7. Render in Python
-
-Use Matplotlib for composition and Seaborn for appropriate statistical marks. Accept an existing pandas DataFrame and return a `matplotlib.figure.Figure`. Avoid hidden notebook state and `inplace=True`. Keep saving separate from figure construction. Do not call `plt.show()` inside reusable functions unless the user requests it.
-
-Render PNG and SVG outputs. Use the same stable filename stem as the `graphic_id`, with version suffixes when needed.
-
-### 8. Publish the evidence bundle
-
-Export the minimum evidence CSV containing every value needed to reproduce visible marks and factual annotations, and no unrelated columns. Select columns from the same validated DataFrame used by the renderer; do not construct a separate analytical dataset.
-
-Write metadata YAML containing the graphic ID, version, title, source DataFrame, grain, filenames, field list, brand profile and version if used, generation time, and SHA-256 fingerprint of the evidence CSV. Use `resources/export_bundle.py` when helpful.
-
-Produce no partial bundle after a validation failure. Never overwrite an existing bundle without explicit authorization.
-
-### 9. Review and iterate
-
-Check data fidelity, graphical integrity, narrative coherence, visual hierarchy, annotations, clipping, spacing, and consistency with the project collection. Automatically repair only low-risk presentation defects. Ask before changing the message, comparison, scale interpretation, data contract, or audience objective.
-
-For external feedback, load the saved brief, contract, code, metadata, and feedback history. Classify each comment as accepted, clarification needed, conflicting, out of scope, upstream-data work, or potentially misleading. Record the disposition and rationale. Save a new version rather than overwriting the prior one.
-
-## Return a complete handoff
-
-Return:
-
-- The rendered PNG and SVG
-- The Matplotlib `Figure` or reusable plotting function
-- Reproducible Python source
-- The minimum-data evidence CSV
-- Metadata YAML with the evidence fingerprint
-- The brief and input contract
-- A concise design rationale, assumptions, and unresolved limitations
-- Updated feedback and version records when revising
-
-Adapt to an existing project layout. Do not force a heavyweight folder structure into a small notebook, but preserve the same logical artifacts.
+Use `resources/export_bundle.py` for local graph and CSV exports when suitable. Keep essential source, units, and interpretation notes beside the graph. Do not require metadata YAML, separate briefs, evidence reports, registries, or standalone source files when code is already integrated. Local export is evidence publication; external upload or sharing requires a request.

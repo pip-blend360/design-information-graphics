@@ -2,7 +2,7 @@
 
 Understand data sufficiently to visualize it truthfully. Do not prepare, redefine, or analytically transform it. Require an analysis-ready pandas DataFrame at the exact grain needed by the graphic.
 
-Record the DataFrame variable, grain and uniqueness key, required fields, business meanings, semantic types, units, null policies, valid bounds, and expected categories or ordering.
+Keep the contract in code or nearby notebook notes; do not require a separate YAML file. Record the DataFrame variable, grain and uniqueness key, required fields, business meanings, semantic types, units, null policies, valid bounds, and expected categories or ordering.
 
 ```yaml
 dataframe: retention_summary
@@ -23,3 +23,5 @@ fields:
 Do not automatically aggregate duplicate grain, parse ambiguous dates, convert percentages, remove nulls, fill values, or filter categories. An actionable error must state the failed rule, expectation, observation, reason rendering is blocked, and required upstream correction. Fail before creating any figure or output.
 
 The evidence CSV must contain values encoded by position, length, area, color, or shape; group and facet IDs; label values; uncertainty bounds; displayed sample sizes; and benchmark values. Exclude unused columns and internal indexes. Use the same validated DataFrame for rendering and export.
+
+For special cases, validate supplied structures as described in `special-cases.md`. Preserve all data needed for recreation, including values specified outside the plotting DataFrame; require those values in prepared tabular evidence rather than inventing analytical records.

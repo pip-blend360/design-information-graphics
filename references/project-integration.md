@@ -1,19 +1,9 @@
-# Project Integration
+# Reuse Project Context
 
-The larger data-science project owns the question, analysis, metrics, prepared DataFrames, and conclusions. This skill owns visual communication and returns reusable figures and publication artifacts.
+The project owns analysis, metrics, prepared inputs, and conclusions; this skill owns visual communication. Establish audience, medium, brand, terminology, color meanings, and comparable scales once in existing notebook/project notes. Reuse them for later graphs unless changed.
 
-Maintain shared audience, decision, narrative sequence, terminology, brand, palette semantics, format, and a graphic registry. Each graphic declares a unique role: orientation, evidence, explanation, qualification, or implication. Before adding one, ask what it contributes that existing graphics do not.
+Choose descriptive graph IDs automatically and check headings, functions, and filenames for collisions. Keep IDs stable for revisions and distinguish materially different graphs. Record ID and draft/finalized status lightly beside code; do not create a mandatory registry or separate per-graph brief.
 
-```yaml
-graphics:
-  - graphic_id: retention-history
-    version: 2
-    role: orientation
-  - graphic_id: retention-program-effect
-    version: 1
-    role: evidence
-```
+Keep terminology, colors, category order, typography, and comparable scales consistent across the collection. Give each graph a useful role without asking a ritual question about that role on every request. Adapt output locations to the project rather than imposing folders.
 
-Check ID collisions and determine whether they mean revision, replacement, or a distinct graphic. Keep terminology, color meanings, comparable scales, category order, typography, and annotations consistent across the collection.
-
-Adapt to the existing project. Preserve logical equivalents of a project brief, graphic registry, per-graphic brief and contract, Python source, feedback history, and versioned PNG, SVG, CSV, and metadata outputs.
+Preserve previous final exports and reproducible code when reopening; use matching graph/CSV version suffixes. Do not silently overwrite. Shared brand profiles may remain project assets, but no per-graph YAML is required.

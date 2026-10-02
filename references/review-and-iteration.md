@@ -1,9 +1,11 @@
-# Review and Iteration
+# Review, Iterate, and Finalize
 
-After rendering, check fidelity, integrity, narrative, hierarchy, annotation accuracy, spacing, clipping, and collection consistency. Repair low-risk presentation defects automatically. Ask before changing the message, audience, comparison, scale interpretation, contract, or narrative role. Present the draft with a brief rationale and ask one focused question about what feels wrong or incomplete.
+Review drafts for data fidelity, graphical integrity, narrative, hierarchy, annotation accuracy, spacing, clipping, and project consistency. Repair low-risk presentation defects automatically. Present the draft with a brief useful explanation; do not force a question or approval ritual after each draft.
 
-For external feedback, load the brief, contract, source, metadata, current outputs, and feedback history. Split comments into atomic requests and classify each as accepted, clarification needed, conflicting, changing the objective, upstream data work, potentially misleading, or rejected with rationale. Do not treat feedback as automatically correct.
+Apply ordinary feedback to the current graph using its existing ID and context. Explicit requests authorize the requested changes; ask only when ambiguity, conflict, misleading implications, or missing upstream data requires resolution. Read available code, nearby notes, and current outputs; do not require metadata, separate briefs, or feedback ledgers. Revisit format selection only for a changed relationship; revalidate for changed inputs/encoding.
 
-Keep `graphic_id` stable and increment `version`. Never silently overwrite prior versions. Record what changed, why, which feedback prompted it, whether the message or contract changed, and the evidence fingerprint.
+Use a simple lifecycle: draft, finalized, reopened draft. Recognize "finalize this graph" and equivalent explicit finalization/export instructions. "Looks good" alone remains conversational feedback. Finalization applies to the current graph; clarify which one only if genuinely ambiguous. Apply last edits and check fidelity and rendered layout before saving. A validation failure blocks finalization.
 
-Use the lifecycle `draft -> creator-review -> release-candidate -> external-review -> revision -> approved`. New feedback or data may reopen an approved graphic.
+Export the graph and exact CSV and leave runnable code in the existing notebook/package. Regenerate data exports when data shown change. If earlier exports were requested during drafting, avoid treating them as approved final versions or silently replacing them.
+
+On "Revise <graphic_id>", preserve earlier final exports and code, keep the ID, and use the next free matching suffix, such as `-v02`, on finalization. Explain changes briefly where useful; do not create separate tracking files.
