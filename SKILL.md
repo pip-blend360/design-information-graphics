@@ -55,7 +55,7 @@ Create a semantic lowercase hyphenated `graphic_id`, such as `retention-program-
 
 ### 4. Declare and validate the data contract
 
-Document the DataFrame name, grain, required fields, semantic meanings, types, units, null policy, bounds, expected categories, and uniqueness keys. Use `scripts/validation.py` when helpful.
+Document the DataFrame name, grain, required fields, semantic meanings, types, units, null policy, bounds, expected categories, and uniqueness keys. Use `resources/validation.py` when helpful.
 
 Stop when the contract is incomplete or validation fails. State what was expected, what was observed, why rendering is blocked, and what the upstream workflow must provide. Do not fix the data.
 
@@ -84,7 +84,7 @@ Render PNG and SVG outputs. Use the same stable filename stem as the `graphic_id
 
 Export the minimum evidence CSV containing every value needed to reproduce visible marks and factual annotations, and no unrelated columns. Select columns from the same validated DataFrame used by the renderer; do not construct a separate analytical dataset.
 
-Write metadata YAML containing the graphic ID, version, title, source DataFrame, grain, filenames, field list, brand profile and version if used, generation time, and SHA-256 fingerprint of the evidence CSV. Use `scripts/export_bundle.py` when helpful.
+Write metadata YAML containing the graphic ID, version, title, source DataFrame, grain, filenames, field list, brand profile and version if used, generation time, and SHA-256 fingerprint of the evidence CSV. Use `resources/export_bundle.py` when helpful.
 
 Produce no partial bundle after a validation failure. Never overwrite an existing bundle without explicit authorization.
 
