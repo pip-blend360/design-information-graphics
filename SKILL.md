@@ -9,15 +9,17 @@ Coordinate one skill with supporting modules. Use Python to render; preserve qua
 
 ## Load guidance selectively
 
-Read `references/design-principles.md` and `references/intake-and-clarification.md` for new graphs, reusing already loaded guidance and established context. Read `references/format-selection.md`, then only the selected family:
+Read `guides/design-principles.md` and `guides/intake-and-clarification.md` for new graphs, reusing already loaded guidance and established context. Read `guides/format-selection.md`, then only the selected family:
 
-- `references/proportions.md`
-- `references/quantitative-and-ranking.md`
-- `references/lines-and-scatter.md`
-- `references/composition-and-cumulative.md`
-- `references/special-cases.md`
+- `guides/proportions.md`
+- `guides/quantitative-and-ranking.md`
+- `guides/lines-and-scatter.md`
+- `guides/composition-and-cumulative.md`
+- `guides/special-cases.md`
 
-For rendering, read `references/data-contracts.md`, `references/narrative-composition.md`, and `references/python-rendering.md`. For feedback and finalization, read `references/review-and-iteration.md`. Read `references/project-integration.md` for shared project context and `references/brand-profiles.md` when resolving branding. Do not reload unaffected modules on every revision.
+For rendering, read `guides/data-contracts.md`, `guides/narrative-composition.md`, and `guides/python-rendering.md`. For feedback and finalization, read `guides/review-and-iteration.md`. Read `guides/project-integration.md` for shared project context and `guides/brand-profiles.md` when resolving branding. Do not reload unaffected modules on every revision.
+
+For a request that may match a contributed chart, consult [the chart examples index](chart-examples/README.md). Reuse an example only when its input contract and analytical assumptions fit the request. Apply the same validation, branding, review, and evidence export as for any other chart.
 
 ## Protect boundaries
 
@@ -27,7 +29,7 @@ Treat source inputs as read-only. Never join, aggregate, reshape analytically, i
 
 1. **Brainstorm briefly.** Inspect the request, existing code, data schema, and project notes. Reuse audience, medium, brand, and conventions. Infer a compact working brief when clear; ask one focused question only when uncertainty could materially change interpretation or design. Keep context in the existing notebook/project, not separate per-graph briefs or YAML.
 2. **Choose the format.** Use the format selector and the relevant family module. Explain the choice briefly. Respect requested formats; explain a concrete mismatch and propose an alternative when necessary. Reuse an existing choice on cosmetic revisions.
-3. **Assign identity and validate.** Choose a descriptive lowercase hyphenated `graphic_id`, check existing headings, functions, and files for collisions, and keep it stable across revisions. Distinguish a new graph from reopening one. Establish grain, fields, units, semantics, uniqueness, and missing-value policy in code or nearby notes. Use `resources/validation.py` when suitable; special structures need explicit equivalent checks.
+3. **Assign identity and validate.** Choose a descriptive lowercase hyphenated `graphic_id`, check existing headings, functions, and files for collisions, and keep it stable across revisions. Distinguish a new graph from reopening one. Establish grain, fields, units, semantics, uniqueness, and missing-value policy in code or nearby notes. Use `chart-tools/validation.py` when suitable; special structures need explicit equivalent checks.
 4. **Design and render a draft.** Compose the comparison, labels, annotations, and necessary qualifications. Apply creator overrides, project standards, brand profile, then defaults. Integrate runnable code into the existing notebook/package; show the graph there. Use Matplotlib and Seaborn where suitable. Do not silently add dependencies or create a replacement notebook when the original is available. Keep previews lightweight and avoid permanent exports until requested.
 5. **Iterate.** Apply ordinary feedback to the same graph. User-requested design changes are authorized; ask only about consequential ambiguity, conflicting requests, unsupported inputs, or misleading implications. Revisit the selector or data checks only when affected. Do not force another brainstorming session, approval gate, or feedback ledger.
 6. **Finalize on instruction.** Recognize **"finalize this graph"** as completion for the current graph. Apply accompanying last edits, check fidelity and rendered layout, then save the graph and exact data CSV. "Looks good" alone remains feedback; explicit equivalent instructions to finalize or export are also sufficient. Do not finalize with validation failures or unresolved material ambiguity.
@@ -39,4 +41,4 @@ Treat source inputs as read-only. Never join, aggregate, reshape analytically, i
 - The graph code in the notebook or Python package already in use. If inaccessible, supply ready-to-insert code and state that integration remains pending.
 - The exact graph data as a CSV beside the saved graph, with matching ID/version. Include all labels, plotted values, uncertainty, benchmarks, and factual annotation values; preserve precision and meaningful identifiers. Never export unrelated source columns or an internal index.
 
-Use `resources/export_bundle.py` for local graph and CSV exports when suitable. Keep essential source, units, and interpretation notes beside the graph. Do not require metadata YAML, separate briefs, evidence reports, registries, or standalone source files when code is already integrated. Local export is evidence publication; external upload or sharing requires a request.
+Use `chart-tools/export_bundle.py` for local graph and CSV exports when suitable. Keep essential source, units, and interpretation notes beside the graph. Do not require metadata YAML, separate briefs, evidence reports, registries, or standalone source files when code is already integrated. Local export is evidence publication; external upload or sharing requires a request.
